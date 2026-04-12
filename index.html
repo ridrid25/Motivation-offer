@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Разработка системы мотивации — премиальный оффер</title>
+  <meta name="description" content="Премиальный оффер для услуги по разработке системы мотивации для малого и среднего бизнеса." />
+  <style>
+    :root {
+      --bg: #0a1020;
+      --bg-2: #0f172d;
+      --bg-3: #131d38;
+      --panel: rgba(14, 23, 45, 0.78);
+      --panel-strong: rgba(12, 20, 38, 0.92);
+      --text: #f5f1e8;
+      --muted: #b9b2a5;
+      --line: rgba(202, 169, 106, 0.18);
+      --line-strong: rgba(202, 169, 106, 0.32);
+      --gold: #caa96a;
+      --gold-2: #e3c58a;
+      --gold-soft: rgba(202, 169, 106, 0.12);
+      --accent: #8f6a35;
+      --accent-dark: #5f4521;
+      --white: #fffaf1;
+      --shadow: 0 18px 55px rgba(0, 0, 0, 0.34);
+      --shadow-strong: 0 28px 90px rgba(0, 0, 0, 0.42);
+      --radius: 24px;
+      --radius-small: 18px;
+      --max-width: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(202, 169, 106, 0.10), transparent 24%),
+        radial-gradient(circle at 90% 0%, rgba(202, 169, 106, 0.06), transparent 18%),
+        linear-gradient(180deg, #09101f 0%, #0d1630 55%, #0a1020 100%);
+      line-height: 1.58;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(circle at center, black 58%, transparent 100%);
+      opacity: 0.45;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 13, 25, 0.70);
+      border-bottom: 1px solid rgba(202, 169, 106, 0.12);
+    }
+
+    .topbar-inner {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #241506;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      box-shadow: 0 10px 24px rgba(202, 169, 106, 0.30);
+      overflow: hidden;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: linear-gradient(120deg, transparent 25%, rgba(255,255,255,0.45) 50%, transparent 75%);
+      transform: translateX(-120%) rotate(10deg);
+      animation: shine 4.5s linear infinite;
+    }
+
+    .brand-title { font-size: 18px; font-weight: 800; letter-spacing: 0.02em; }
+    .brand-subtitle { color: var(--muted); font-size: 13px; }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: 0.25s ease;
+      font-size: 14px;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--text);
+      border-color: rgba(202, 169, 106, 0.18);
+      background: rgba(202, 169, 106, 0.08);
+    }
+
+    .nav .nav-cta {
+      color: #241506;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      box-shadow: 0 10px 24px rgba(202, 169, 106, 0.24);
+    }
+
+    .section { padding: 46px 0; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(202, 169, 106, 0.06);
+      color: #f2deba;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.07;
+      letter-spacing: -0.02em;
+    }
+
+    .section-text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 780px;
+    }
+
+    .hero { padding: 44px 0 34px; }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at top right, rgba(202,169,106,0.16), transparent 28%),
+        linear-gradient(135deg, rgba(17, 27, 49, 0.97), rgba(11, 18, 34, 0.98));
+      border: 1px solid rgba(202, 169, 106, 0.16);
+      box-shadow: var(--shadow-strong);
+      padding: clamp(28px, 4vw, 46px);
+      isolation: isolate;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(115deg, transparent 18%, rgba(255,255,255,0.05) 46%, transparent 62%);
+      opacity: 0.4;
+    }
+
+    .hero-orb,
+    .hero-orb-2 {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(14px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-orb {
+      top: -80px;
+      right: -70px;
+      width: 260px;
+      height: 260px;
+      background: rgba(202, 169, 106, 0.16);
+    }
+
+    .hero-orb-2 {
+      left: -60px;
+      bottom: -100px;
+      width: 220px;
+      height: 220px;
+      background: rgba(122, 154, 208, 0.12);
+    }
+
+    .hero-spotlight {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.08), transparent 60%);
+      opacity: 0.65;
+      z-index: 0;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-copy h1 {
+      margin: 18px 0 18px;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.01;
+      max-width: 840px;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      color: #ded6ca;
+      font-size: clamp(18px, 2.2vw, 22px);
+      max-width: 760px;
+    }
+
+    .hero-actions,
+    .footer-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .button {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      padding: 14px 22px;
+      border-radius: 18px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+      will-change: transform;
+    }
+
+    .button::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.35) 50%, transparent 80%);
+      transform: translateX(-130%);
+      transition: transform 0.7s ease;
+      pointer-events: none;
+    }
+
+    .button:hover::before { transform: translateX(130%); }
+    .button:hover { transform: translateY(-2px); }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: #241506;
+      box-shadow: 0 12px 30px rgba(202, 169, 106, 0.26);
+    }
+
+    .button-secondary {
+      background: rgba(202, 169, 106, 0.05);
+      border-color: rgba(202, 169, 106, 0.22);
+      color: var(--text);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    .button-ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.28);
+      transform: scale(0);
+      animation: ripple 0.7s ease-out;
+      pointer-events: none;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .hero-points span,
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(202, 169, 106, 0.18);
+      background: rgba(202, 169, 106, 0.06);
+      font-size: 14px;
+      color: #ead4ac;
+    }
+
+    .hero-side { display: grid; gap: 16px; }
+
+    .floating-card,
+    .metric-card,
+    .panel,
+    .timeline-card,
+    .price-card,
+    .footer-card,
+    .feature-card,
+    .result-card,
+    .pain-card,
+    .example-card,
+    .tab-panel {
+      background: var(--panel);
+      border: 1px solid rgba(202, 169, 106, 0.14);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .floating-card,
+    .panel,
+    .pain-card,
+    .result-card,
+    .timeline-card,
+    .price-card,
+    .example-card,
+    .tab-panel {
+      padding: 24px;
+    }
+
+    .floating-card h3,
+    .panel h3,
+    .pain-card h3,
+    .result-card h3,
+    .timeline-card h3,
+    .price-card h3,
+    .example-card h3,
+    .tab-panel h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .floating-card p,
+    .panel p,
+    .timeline-card p,
+    .price-card p,
+    .footer-card p,
+    .example-card p,
+    .tab-panel p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric-card {
+      padding: 16px;
+      min-height: 126px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -35% auto;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(202, 169, 106, 0.10);
+      filter: blur(12px);
+    }
+
+    .metric-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 34px;
+      line-height: 1;
+      color: #f0d49e;
+      letter-spacing: -0.03em;
+    }
+
+    .metric-card span { color: var(--muted); font-size: 14px; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+
+    .list {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 28px;
+      color: var(--muted);
+    }
+
+    .list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff7e7 0%, var(--gold) 58%, rgba(202, 169, 106, 0.10) 100%);
+      box-shadow: 0 0 16px rgba(202, 169, 106, 0.28);
+    }
+
+    .feature-card {
+      position: relative;
+      padding: 22px;
+      min-height: 100%;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      transform-style: preserve-3d;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(202, 169, 106, 0.28);
+      box-shadow: 0 0 0 1px rgba(202, 169, 106, 0.16), 0 26px 80px rgba(0, 0, 0, 0.36);
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      color: #241506;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      box-shadow: 0 10px 20px rgba(202, 169, 106, 0.22);
+    }
+
+    .feature-card h3,
+    .result-card h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      line-height: 1.15;
+    }
+
+    .feature-card p,
+    .result-card p,
+    .pain-card p { margin: 0; color: var(--muted); }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .timeline-card {
+      position: relative;
+      padding-top: 58px;
+      min-height: 200px;
+    }
+
+    .timeline-number {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      font-weight: 900;
+      color: #241506;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      box-shadow: 0 8px 18px rgba(202, 169, 106, 0.24);
+    }
+
+    .tabs-shell {
+      margin-top: 24px;
+    }
+
+    .tabs-nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .tab-button {
+      min-height: 50px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(202, 169, 106, 0.16);
+      background: rgba(202, 169, 106, 0.04);
+      color: var(--muted);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.22s ease;
+    }
+
+    .tab-button:hover,
+    .tab-button[aria-selected="true"] {
+      color: var(--text);
+      background: rgba(202, 169, 106, 0.10);
+      border-color: rgba(202, 169, 106, 0.28);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.is-active { display: block; animation: fadeUp 0.4s ease both; }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(202, 169, 106, 0.12);
+      background: rgba(7, 12, 24, 0.38);
+    }
+
+    table { width: 100%; border-collapse: collapse; min-width: 720px; }
+
+    th, td {
+      padding: 16px 18px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(202, 169, 106, 0.10);
+    }
+
+    th {
+      color: #f2dfb9;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      background: rgba(202, 169, 106, 0.05);
+    }
+
+    td { color: var(--muted); }
+    tr:last-child td { border-bottom: none; }
+
+    .footer-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(26px, 4vw, 40px);
+      background: linear-gradient(135deg, rgba(17, 27, 49, 0.98), rgba(11, 18, 34, 0.98));
+      border: 1px solid rgba(202, 169, 106, 0.18);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .footer-card::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      bottom: -80px;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      background: rgba(202, 169, 106, 0.10);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .footer-card > * { position: relative; z-index: 1; }
+    .footer-card h2 { margin: 14px 0 12px; font-size: clamp(30px, 4vw, 44px); line-height: 1.05; }
+    .footer-note { margin-top: 16px; color: var(--muted); font-size: 14px; }
+
+    .site-footer { padding: 22px 0 40px; color: #928879; font-size: 14px; }
+    .site-footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .animated-fade { animation: fadeUp 0.85s ease both; }
+    .delay-1 { animation-delay: 0.08s; }
+    .delay-2 { animation-delay: 0.16s; }
+    .delay-3 { animation-delay: 0.24s; }
+    .delay-4 { animation-delay: 0.32s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-120%) rotate(10deg); }
+      100% { transform: translateX(140%) rotate(10deg); }
+    }
+
+    @keyframes ripple {
+      to {
+        transform: scale(12);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid, .grid-3, .grid-4, .timeline { grid-template-columns: 1fr 1fr; }
+      .stats { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 860px) {
+      .topbar-inner, .site-footer-inner, .hero-actions, .footer-actions { align-items: stretch; }
+      .hero-grid, .grid-2, .grid-3, .grid-4, .timeline { grid-template-columns: 1fr; }
+      .nav { display: none; }
+      .hero { padding-top: 26px; }
+      .button { width: 100%; }
+      .hero-card { border-radius: 28px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top" aria-label="На главный экран">
+        <div class="brand-mark">M</div>
+        <div class="brand-text">
+          <div class="brand-title">Мастер CFO</div>
+          <div class="brand-subtitle">Разработка системы мотивации</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Навигация по странице">
+        <a href="#problems">Проблема</a>
+        <a href="#solution">Решение</a>
+        <a href="#scope">Что входит</a>
+        <a href="#format">Формат</a>
+        <a class="nav-cta button-magnetic" href="#cta">Оставить заявку</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="container">
+        <div class="hero-card pulse" id="heroCard">
+          <div class="hero-orb"></div>
+          <div class="hero-orb-2"></div>
+          <div class="hero-spotlight"></div>
+
+          <div class="hero-grid">
+            <div class="hero-copy animated-fade">
+              <span class="eyebrow">B2B-консалтинг для малого и среднего бизнеса</span>
+              <h1>Система мотивации, которая превращает бонусы в управляемый инструмент роста, а не в источник споров и потерь</h1>
+              <p>
+                Разрабатываю понятную премиальную модель KPI, бонусов и правил расчёта под вашу компанию.
+                С опорой на прибыль, выручку, маржу и управленческий контроль — без хаоса в формулах и субъективных трактовок.
+              </p>
+
+              <div class="hero-actions">
+                <a class="button button-primary button-magnetic" href="#cta">Получить предложение</a>
+                <a class="button button-secondary" href="#scope">Посмотреть состав услуги</a>
+              </div>
+
+              <div class="hero-points">
+                <span>Аудит текущей схемы</span>
+                <span>Финансовая логика мотивации</span>
+                <span>Калькулятор выплат</span>
+                <span>Внедрение и обучение</span>
+              </div>
+            </div>
+
+            <div class="hero-side animated-fade delay-1">
+              <div class="floating-card">
+                <h3>Что получает собственник</h3>
+                <p>
+                  Одну прозрачную систему вместо ручных расчётов, конфликтов по бонусам и неочевидной связи между ФОТ и финансовым результатом.
+                </p>
+              </div>
+
+              <div class="stats">
+                <div class="metric-card">
+                  <strong data-counter="100">0</strong>
+                  <span>прозрачности логики выплат по ролям и зонам ответственности</span>
+                </div>
+                <div class="metric-card">
+                  <strong data-counter="3">0</strong>
+                  <span>ключевых уровня контроля: деньги, результат, дисциплина</span>
+                </div>
+                <div class="metric-card">
+                  <strong data-counter="1">0</strong>
+                  <span>рабочий инструмент вместо множества спорных таблиц и ручных правок</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="problems">
+      <div class="container grid-2">
+        <article class="pain-card animated-fade tilt-card">
+          <span class="eyebrow">Боль клиента</span>
+          <h2 class="section-title">Почему действующая мотивация часто работает против компании</h2>
+          <ul class="list">
+            <li>Сотрудники спорят о бонусах, потому что формулы сложные или считаются вручную.</li>
+            <li>Команда гонится за оборотом, а прибыль, качество и дисциплина не растут нужным темпом.</li>
+            <li>Фонд оплаты труда увеличивается быстрее, чем управляемость и финансовый эффект.</li>
+            <li>Руководитель не видит, кто действительно влияет на результат, а кто создаёт только видимость активности.</li>
+            <li>Даже хорошая идея не внедряется, потому что правила непонятны и вызывают сопротивление.</li>
+          </ul>
+        </article>
+
+        <article class="result-card animated-fade delay-1 tilt-card" id="solution">
+          <span class="eyebrow">Решение</span>
+          <h2 class="section-title">На выходе вы получаете не таблицу, а систему управления мотивацией</h2>
+          <p>
+            Определяем, кого и за что мотивировать, как считать премию, какие показатели действительно влияют на результат,
+            где нужны ограничители, а где — стимулирование роста. Всё это собирается в понятную схему и рабочий инструмент.
+          </p>
+
+          <div class="grid-2" style="margin-top: 18px; gap: 16px;">
+            <div class="feature-card tilt-card">
+              <div class="feature-icon">K</div>
+              <h3>KPI без перегруза</h3>
+              <p>Только те показатели, которые реально помогают управлять результатом, а не имитируют контроль.</p>
+            </div>
+            <div class="feature-card tilt-card">
+              <div class="feature-icon">₽</div>
+              <h3>Связь с деньгами</h3>
+              <p>Мотивация строится вокруг прибыли, выручки, маржи, качества и дисциплины выполнения.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <span class="eyebrow">Преимущества работы со мной</span>
+        <h2 class="section-title">Сделано для бизнеса, а не ради красивой схемы на бумаге</h2>
+        <p class="section-text">
+          Важно не только разработать KPI, но и сделать так, чтобы система выдержала согласование, внедрение и реальную ежемесячную работу.
+        </p>
+
+        <div class="grid-3" style="margin-top: 22px;">
+          <article class="feature-card animated-fade tilt-card">
+            <div class="feature-icon">01</div>
+            <h3>Говорю на языке финансов</h3>
+            <p>Смотрю на мотивацию через прибыль, ФОТ, маржу, окупаемость и устойчивость модели, а не только через HR-формулировки.</p>
+          </article>
+          <article class="feature-card animated-fade delay-1 tilt-card">
+            <div class="feature-icon">02</div>
+            <h3>Делаю внедряемо</h3>
+            <p>Руководитель и сотрудник должны одинаково понимать, за что платят и как можно влиять на свой доход.</p>
+          </article>
+          <article class="feature-card animated-fade delay-2 tilt-card">
+            <div class="feature-icon">03</div>
+            <h3>Собираю под вашу модель</h3>
+            <p>Продажи, производство, сервис, логистика и back-office требуют разной логики расчёта и разных ограничителей.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <span class="eyebrow">Интерактивный блок</span>
+        <h2 class="section-title">Как меняется управляемость после внедрения</h2>
+        <p class="section-text">Переключите сценарий и посмотрите, какой результат получает руководитель на практике.</p>
+
+        <div class="tabs-shell">
+          <div class="tabs-nav" role="tablist" aria-label="Сценарии результата">
+            <button class="tab-button" role="tab" aria-selected="true" aria-controls="tab-1" id="tab-btn-1">До проекта</button>
+            <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-2" id="tab-btn-2">После модели</button>
+            <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-3" id="tab-btn-3">После внедрения</button>
+          </div>
+
+          <div class="tab-panel is-active" id="tab-1" role="tabpanel" aria-labelledby="tab-btn-1">
+            <h3>До проекта</h3>
+            <p>Формулы считаются вручную, сотрудники трактуют бонусы по-своему, руководитель тратит время на разбор споров, а фонд оплаты труда живёт отдельно от финансового результата компании.</p>
+          </div>
+
+          <div class="tab-panel" id="tab-2" role="tabpanel" aria-labelledby="tab-btn-2">
+            <h3>После разработки модели</h3>
+            <p>У каждой роли появляется понятная логика KPI, пороги и ограничители. Компания видит, сколько платит, за что платит и как это влияет на выручку, маржу и управляемость.</p>
+          </div>
+
+          <div class="tab-panel" id="tab-3" role="tabpanel" aria-labelledby="tab-btn-3">
+            <h3>После внедрения</h3>
+            <p>Команда понимает правила игры, расчёты становятся прозрачными, сопротивление снижается, а руководитель получает не хаос в мотивации, а рабочий инструмент управления поведением и результатом.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="scope">
+      <div class="container panel">
+        <span class="eyebrow">Что входит в услугу</span>
+        <h2 class="section-title">Полный пакет: от диагностики до обучения команды</h2>
+        <p class="section-text">
+          В проекте закрываются не только формулы, но и правила запуска, сценарии расчёта, документы и объяснение логики для сотрудников.
+        </p>
+
+        <div class="timeline">
+          <article class="timeline-card animated-fade tilt-card">
+            <div class="timeline-number">1</div>
+            <h3>Аудит</h3>
+            <p>Разбор текущей схемы, конфликтных мест, ручных расчётов, перекосов по KPI и скрытых потерь для бизнеса.</p>
+          </article>
+          <article class="timeline-card animated-fade delay-1 tilt-card">
+            <div class="timeline-number">2</div>
+            <h3>Разработка модели</h3>
+            <p>Проектирование KPI, бонусной логики, порогов, ограничителей и правил расчёта по ролям.</p>
+          </article>
+          <article class="timeline-card animated-fade delay-2 tilt-card">
+            <div class="timeline-number">3</div>
+            <h3>Калькулятор</h3>
+            <p>Excel- или Google Sheets-калькулятор с автоматикой расчётов и проверкой экономического эффекта.</p>
+          </article>
+          <article class="timeline-card animated-fade delay-3 tilt-card">
+            <div class="timeline-number">4</div>
+            <h3>Внедрение</h3>
+            <p>Положение о мотивации, порядок запуска, переходный период и контроль корректности выплат.</p>
+          </article>
+          <article class="timeline-card animated-fade delay-4 tilt-card">
+            <div class="timeline-number">5</div>
+            <h3>Обучение</h3>
+            <p>Объяснение логики собственнику, руководителю и команде, чтобы система реально заработала в жизни.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-2">
+        <article class="panel animated-fade tilt-card">
+          <span class="eyebrow">Когда особенно полезно</span>
+          <h2 class="section-title">Кому подходит эта услуга</h2>
+          <ul class="list">
+            <li>Если вы уже платите бонусы, но не видите нужного эффекта для бизнеса.</li>
+            <li>Если выручка растёт быстрее, чем прибыльность и управляемость команды.</li>
+            <li>Если сотрудники не понимают, как считается доход, и постоянно спорят о выплатах.</li>
+            <li>Если вы хотите масштабироваться, не перенося старый хаос в новый рост.</li>
+            <li>Если нужен инструмент, который показывает: сколько платим, за что и зачем.</li>
+          </ul>
+        </article>
+
+        <article class="panel animated-fade delay-1 tilt-card">
+          <span class="eyebrow">Что получает бизнес</span>
+          <h2 class="section-title">Результат после проекта</h2>
+          <div class="grid-2" style="margin-top: 18px; gap: 16px;">
+            <article class="result-card tilt-card">
+              <h3>Прозрачная логика</h3>
+              <p>Понятные правила мотивации по ролям, без «магии» в формулах и ручных интерпретаций.</p>
+            </article>
+            <article class="result-card tilt-card">
+              <h3>Сценарии выплат</h3>
+              <p>Проверка финансового эффекта до запуска и понимание, как схема поведёт себя на практике.</p>
+            </article>
+            <article class="result-card tilt-card">
+              <h3>Рабочий калькулятор</h3>
+              <p>Инструмент для ежемесячной работы руководителя, финансовой службы или собственника.</p>
+            </article>
+            <article class="result-card tilt-card">
+              <h3>Документы и внедрение</h3>
+              <p>Финальный пакет материалов, который можно использовать сразу после согласования.</p>
+            </article>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container example-card tilt-card">
+        <span class="eyebrow">Кейсы / примеры результата</span>
+        <h2 class="section-title">Что именно получает клиент по итогам проекта</h2>
+        <p class="section-text">
+          Вместо общих обещаний — конкретный состав результата, который можно проверить, использовать и внедрять.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Блок</th>
+                <th>Что получает клиент</th>
+                <th>Зачем это бизнесу</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Аудит</strong></td>
+                <td>Диагностика текущей мотивации, слабых мест, рисков и финансовых потерь.</td>
+                <td>Показывает, где компания переплачивает без эффекта и где теряет деньги из-за неверных стимулов.</td>
+              </tr>
+              <tr>
+                <td><strong>Модель</strong></td>
+                <td>Готовая схема KPI, бонусов, ограничителей и правил расчёта.</td>
+                <td>Позволяет увязать мотивацию с выручкой, маржой, качеством, сроками и контролем ФОТ.</td>
+              </tr>
+              <tr>
+                <td><strong>Калькулятор</strong></td>
+                <td>Рабочая таблица с автоматическим расчётом выплат и сценарным анализом.</td>
+                <td>Снимает споры и ошибки ручного расчёта, ускоряет принятие решений и проверку итогов.</td>
+              </tr>
+              <tr>
+                <td><strong>Внедрение</strong></td>
+                <td>Положение о мотивации, логика запуска и пояснения для команды.</td>
+                <td>Снижает сопротивление сотрудников и повышает шанс, что система заработает в реальности.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="format">
+      <div class="container grid-2">
+        <article class="panel animated-fade tilt-card">
+          <span class="eyebrow">Формат работы</span>
+          <h2 class="section-title">Как проходит проект</h2>
+          <ul class="list">
+            <li>Стартовая встреча и сбор исходных данных.</li>
+            <li>Разбор текущей логики мотивации и финансовых ограничений.</li>
+            <li>Подготовка архитектуры KPI, бонусов и правил расчёта.</li>
+            <li>Согласование модели с управленческой реальностью бизнеса.</li>
+            <li>Передача итоговых материалов, обучение и запуск.</li>
+          </ul>
+        </article>
+
+        <article class="price-card animated-fade delay-1 tilt-card">
+          <span class="eyebrow">Сроки и стоимость</span>
+          <h2 class="section-title">Условия проекта</h2>
+          <div class="grid-2" style="gap: 16px; margin-top: 20px;">
+            <div class="result-card tilt-card">
+              <h3>Срок</h3>
+              <p>Обычно 2–4 недели, в зависимости от структуры компании, числа ролей и глубины доработки.</p>
+            </div>
+            <div class="result-card tilt-card">
+              <h3>Формат</h3>
+              <p>Онлайн-встречи, рабочие документы, калькулятор и финальный пакет материалов для внедрения.</p>
+            </div>
+          </div>
+          <div class="result-card tilt-card" style="margin-top: 16px;">
+            <h3>Стоимость</h3>
+            <p><strong>По запросу.</strong> После короткой диагностики задачи определяется точный объём работ и итоговое коммерческое предложение.</p>
+          </div>
+          <p style="margin-top: 16px;">
+            Это честнее фиксированной цены «вслепую»: система мотивации для двух отделов и для многослойной структуры — это разные по объёму проекты.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="cta">
+      <div class="container">
+        <div class="footer-card pulse" id="ctaCard">
+          <span class="eyebrow">Следующий шаг</span>
+          <h2>Оставьте заявку — и я покажу, как система мотивации может работать именно в вашей компании</h2>
+          <p>
+            На первой встрече разберём текущую схему, определим слабые места и покажем, где теряются деньги,
+            управляемость или смысл в бонусах. После этого будет понятно, нужна ли полноценная разработка и какого эффекта стоит ожидать.
+          </p>
+
+          <div class="footer-actions">
+            <a class="button button-primary button-magnetic" href="mailto:hello@example.com">Оставить заявку</a>
+            <a class="button button-secondary" href="tel:+70000000000">Обсудить задачу</a>
+          </div>
+
+          <p class="footer-note">
+            Контакты в шаблоне — заглушки. Для публикации замените их на ваш e-mail, Telegram, форму заявки или ссылку на календарь.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <span>© Мастер CFO — оффер для GitHub Pages</span>
+      <span>Одностраничный HTML-файл с встроенными стилями, интерактивностью и адаптивной версткой</span>
+    </div>
+  </footer>
+
+  <script>
+    // Подсветка hero от движения курсора
+    const heroCard = document.getElementById('heroCard');
+    if (heroCard) {
+      heroCard.addEventListener('pointermove', (event) => {
+        const rect = heroCard.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        heroCard.style.setProperty('--mx', x + '%');
+        heroCard.style.setProperty('--my', y + '%');
+      });
+    }
+
+    // Ripple-эффект на кнопках
+    document.querySelectorAll('.button').forEach((button) => {
+      button.addEventListener('click', (event) => {
+        const ripple = document.createElement('span');
+        ripple.className = 'button-ripple';
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = size + 'px';
+        ripple.style.height = size + 'px';
+        ripple.style.left = (event.clientX - rect.left - size / 2) + 'px';
+        ripple.style.top = (event.clientY - rect.top - size / 2) + 'px';
+        button.appendChild(ripple);
+        ripple.addEventListener('animationend', () => ripple.remove());
+      });
+    });
+
+    // Легкий магнитный эффект для главных CTA
+    document.querySelectorAll('.button-magnetic').forEach((button) => {
+      button.addEventListener('pointermove', (event) => {
+        const rect = button.getBoundingClientRect();
+        const x = event.clientX - rect.left - rect.width / 2;
+        const y = event.clientY - rect.top - rect.height / 2;
+        button.style.transform = `translate(${x * 0.08}px, ${y * 0.08}px)`;
+      });
+      button.addEventListener('pointerleave', () => {
+        button.style.transform = '';
+      });
+    });
+
+    // Табы
+    const tabButtons = Array.from(document.querySelectorAll('.tab-button'));
+    const tabPanels = Array.from(document.querySelectorAll('.tab-panel'));
+    tabButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const target = button.getAttribute('aria-controls');
+        tabButtons.forEach((btn) => btn.setAttribute('aria-selected', btn === button ? 'true' : 'false'));
+        tabPanels.forEach((panel) => panel.classList.toggle('is-active', panel.id === target));
+      });
+    });
+
+    // Tilt-card эффект
+    document.querySelectorAll('.tilt-card').forEach((card) => {
+      card.addEventListener('pointermove', (event) => {
+        const rect = card.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const rx = ((y / rect.height) - 0.5) * -8;
+        const ry = ((x / rect.width) - 0.5) * 8;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-3px)`;
+      });
+      card.addEventListener('pointerleave', () => {
+        card.style.transform = '';
+      });
+    });
+
+    // Анимация счётчиков
+    const counters = document.querySelectorAll('[data-counter]');
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = Number(el.dataset.counter);
+        const suffix = target === 100 ? '%' : '';
+        const duration = 1200;
+        const start = performance.now();
+
+        const tick = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const value = Math.floor(progress * target);
+          el.textContent = value + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target + suffix;
+        };
+
+        requestAnimationFrame(tick);
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach((counter) => counterObserver.observe(counter));
+
+    // Активный пункт меню по секциям
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav a[href^="#"]');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      });
+    }, { threshold: 0.45 });
+    sections.forEach((section) => sectionObserver.observe(section));
+  </script>
+</body>
+</html>
