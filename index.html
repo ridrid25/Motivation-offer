@@ -1202,6 +1202,74 @@
       background: var(--green);
     }
 
+    .control-bridge {
+      margin-top: 18px;
+      padding: 24px 26px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr) auto;
+      align-items: center;
+      gap: 26px;
+      border: 1px solid color-mix(in srgb, var(--primary) 32%, var(--line));
+      border-radius: 16px;
+      background: linear-gradient(120deg, var(--surface-blue), var(--surface));
+    }
+
+    .bridge-kicker {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--primary);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .control-bridge h3 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: -.025em;
+      line-height: 1.25;
+    }
+
+    .control-bridge p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .bridge-signals {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px;
+    }
+
+    .bridge-signals span {
+      min-height: 34px;
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      color: var(--muted);
+      background: color-mix(in srgb, var(--surface) 86%, transparent);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .bridge-signals span::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .control-bridge .button {
+      white-space: nowrap;
+    }
+
     .process-section {
       color: var(--navy-text);
       background: var(--navy);
@@ -1744,6 +1812,15 @@
         grid-template-columns: 1fr;
       }
 
+      .control-bridge {
+        grid-template-columns: 1fr auto;
+      }
+
+      .bridge-signals {
+        grid-column: 1 / -1;
+        grid-row: 2;
+      }
+
       .cta-grid {
         grid-template-columns: 1fr;
       }
@@ -1865,6 +1942,21 @@
 
       .comparison-row {
         grid-template-columns: 1fr;
+      }
+
+      .control-bridge {
+        padding: 20px;
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .bridge-signals {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .control-bridge .button {
+        width: 100%;
       }
 
       .comparison-row > div {
@@ -2339,6 +2431,24 @@
             <div class="comparison-state after"><span class="state-dot"></span><span>Единый регламент снижает споры и ручное управление</span></div>
           </div>
         </div>
+
+        <aside class="control-bridge" aria-label="Демонстрационный модуль контроля качества продаж">
+          <div>
+            <span class="bridge-kicker">Следующий уровень · Happy Sales Control</span>
+            <h3>Как выглядит контроль после внедрения</h3>
+            <p>Демонстрационный дашборд показывает, как собственник контролирует не только продажи, но и качество полученного результата.</p>
+          </div>
+          <div class="bridge-signals" aria-label="Контролируемые показатели">
+            <span>Продажи</span>
+            <span>Маржа</span>
+            <span>Оплаты</span>
+            <span>Дебиторка</span>
+          </div>
+          <a class="button button-primary" href="https://happysalescontrol.ridfinance.ru/" target="_blank" rel="noopener">
+            Открыть дашборд
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+          </a>
+        </aside>
       </div>
     </section>
 
