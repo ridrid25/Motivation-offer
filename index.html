@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#faf8f5">
   <meta name="description" content="Диагностика и разработка системы мотивации, которая связывает действия команды с прибылью, денежным потоком и качеством работы.">
   <title>Система мотивации, которая усиливает прибыль — РидФинанс</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230e1a33'/%3E%3Cpath d='M15 45V25m17 20V15m17 30V31M13 16l14 8 13-11 12 7' fill='none' stroke='%23d9b56d' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -333,12 +334,12 @@
     .hero-grid {
       position: relative;
       z-index: 1;
-      min-height: 650px;
-      padding: clamp(36px, 6vw, 76px);
+      min-height: 560px;
+      padding: clamp(34px, 4.6vw, 58px);
       display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(330px, .88fr);
+      grid-template-columns: minmax(0, 1.18fr) minmax(330px, .82fr);
       align-items: center;
-      gap: clamp(40px, 7vw, 82px);
+      gap: clamp(34px, 5vw, 62px);
     }
 
     .eyebrow {
@@ -365,7 +366,7 @@
       max-width: 720px;
       margin: 0;
       color: #fff;
-      font-size: clamp(38px, 5.2vw, 70px);
+      font-size: clamp(38px, 4.55vw, 60px);
       font-weight: 800;
       letter-spacing: -.055em;
       line-height: .99;
@@ -378,9 +379,9 @@
 
     .hero-copy {
       max-width: 660px;
-      margin: 26px 0 0;
+      margin: 22px 0 0;
       color: #c3ccdd;
-      font-size: clamp(17px, 2vw, 20px);
+      font-size: clamp(16px, 1.7vw, 18px);
       line-height: 1.55;
     }
 
@@ -388,7 +389,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 34px;
+      margin-top: 28px;
     }
 
     .hero-note {
@@ -413,7 +414,7 @@
       position: relative;
       max-width: 430px;
       justify-self: end;
-      padding: 22px;
+      padding: 19px;
       border: 1px solid rgba(255,255,255,.14);
       border-radius: 18px;
       background: rgba(255,255,255,.075);
@@ -471,8 +472,8 @@
 
     .factor-list {
       display: grid;
-      gap: 16px;
-      margin: 22px 0;
+      gap: 13px;
+      margin: 18px 0;
     }
 
     .factor-row {
@@ -511,6 +512,13 @@
       height: 100%;
       border-radius: inherit;
       background: linear-gradient(90deg, #7ea1ee, #d9b56d);
+      transform-origin: left;
+      animation: bar-grow 700ms cubic-bezier(.2,.7,.2,1) both;
+    }
+
+    @keyframes bar-grow {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
     }
 
     .model-formula {
@@ -539,8 +547,8 @@
     .signal-strip {
       position: relative;
       z-index: 3;
-      width: min(calc(100% - 72px), 1030px);
-      margin: -42px auto 0;
+      width: min(calc(100% - 72px), 1050px);
+      margin: -34px auto 0;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       border: 1px solid var(--line);
@@ -549,8 +557,8 @@
     }
 
     .signal {
-      min-height: 110px;
-      padding: 24px 26px;
+      min-height: 92px;
+      padding: 18px 22px;
       display: flex;
       gap: 15px;
       align-items: flex-start;
@@ -593,7 +601,7 @@
     }
 
     .section {
-      padding: 108px 0;
+      padding: 88px 0;
     }
 
     .section-tight {
@@ -632,10 +640,10 @@
     }
 
     .diagnostic-shell {
-      margin-top: 42px;
+      margin-top: 36px;
       overflow: hidden;
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(310px, .75fr);
+      grid-template-columns: minmax(0, 1.08fr) minmax(330px, .92fr);
       border: 1px solid var(--line);
       border-radius: 20px;
       background: var(--surface);
@@ -643,6 +651,7 @@
 
     .quiz-panel {
       padding: clamp(24px, 4vw, 44px);
+      min-height: 470px;
     }
 
     .quiz-progress-row {
@@ -650,7 +659,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      margin-bottom: 30px;
+      margin-bottom: 42px;
     }
 
     .quiz-progress-label {
@@ -666,7 +675,7 @@
     }
 
     .quiz-progress {
-      width: 160px;
+      width: 190px;
       height: 6px;
       overflow: hidden;
       border-radius: 999px;
@@ -683,43 +692,43 @@
     }
 
     .question-list {
-      display: grid;
-      gap: 26px;
+      min-height: 190px;
     }
 
     .question {
-      padding-bottom: 26px;
-      border-bottom: 1px solid var(--line);
+      display: none;
+      animation: question-in 220ms ease both;
     }
 
-    .question:last-child {
-      padding-bottom: 0;
-      border-bottom: 0;
+    .question.is-active {
+      display: block;
     }
 
     .question-title {
-      margin: 0 0 14px;
-      font-size: 16px;
+      max-width: 630px;
+      margin: 0 0 24px;
+      font-size: clamp(21px, 2.35vw, 29px);
       font-weight: 700;
-      line-height: 1.42;
+      letter-spacing: -.025em;
+      line-height: 1.25;
     }
 
     .answer-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
     }
 
     .answer {
-      min-width: 96px;
-      min-height: 40px;
-      padding: 0 14px;
+      min-width: 0;
+      min-height: 54px;
+      padding: 0 16px;
       border: 1px solid var(--line);
       border-radius: 10px;
       cursor: pointer;
       color: var(--muted);
       background: transparent;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
       transition: color 150ms ease, background 150ms ease, border-color 150ms ease;
     }
@@ -734,6 +743,67 @@
       color: var(--primary);
       border-color: color-mix(in srgb, var(--primary) 45%, var(--line));
       background: var(--primary-soft);
+    }
+
+    .quiz-navigation {
+      margin-top: 34px;
+      padding-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .quiz-back {
+      min-height: 38px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 0;
+      cursor: pointer;
+      color: var(--muted);
+      background: transparent;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .quiz-back:disabled {
+      visibility: hidden;
+    }
+
+    .quiz-back svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .quiz-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .quiz-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--line-strong);
+      transition: width 180ms ease, background 180ms ease, border-radius 180ms ease;
+    }
+
+    .quiz-dot.is-active {
+      width: 22px;
+      border-radius: 999px;
+      background: var(--primary);
+    }
+
+    .quiz-dot.is-complete {
+      background: var(--green);
+    }
+
+    @keyframes question-in {
+      from { opacity: 0; transform: translateY(7px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .quiz-side {
@@ -925,6 +995,146 @@
       font-size: 14px;
     }
 
+    .deliverable-map {
+      position: relative;
+      margin-top: 40px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(250px, .82fr) minmax(0, 1fr);
+      align-items: stretch;
+      gap: 16px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--primary-soft) 62%, transparent), transparent 38%),
+        var(--surface);
+    }
+
+    .deliverable-map::before,
+    .deliverable-map::after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      top: 50%;
+      width: 20%;
+      height: 1px;
+      background: var(--line-strong);
+    }
+
+    .deliverable-map::before { left: 27%; }
+    .deliverable-map::after { right: 27%; }
+
+    .deliverable-rail {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 12px;
+    }
+
+    .deliverable-item {
+      min-height: 112px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 13px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: var(--surface);
+    }
+
+    .deliverable-item .feature-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+    }
+
+    .deliverable-item h3 {
+      margin: 1px 0 5px;
+      font-size: 15px;
+      line-height: 1.25;
+    }
+
+    .deliverable-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .deliverable-core {
+      position: relative;
+      z-index: 2;
+      min-height: 360px;
+      padding: 28px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid color-mix(in srgb, var(--primary) 35%, var(--line));
+      border-radius: 16px;
+      color: #fff;
+      background: var(--navy);
+      text-align: center;
+    }
+
+    .core-orbit {
+      position: relative;
+      width: 128px;
+      height: 128px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 24px;
+      border: 1px solid rgba(185,206,255,.27);
+      border-radius: 50%;
+    }
+
+    .core-orbit::before,
+    .core-orbit::after {
+      content: "";
+      position: absolute;
+      inset: 13px;
+      border: 1px solid rgba(217,181,109,.25);
+      border-radius: 50%;
+    }
+
+    .core-orbit::after {
+      inset: 29px;
+      border-color: rgba(185,206,255,.32);
+      background: rgba(110,155,245,.13);
+    }
+
+    .core-orbit svg {
+      position: relative;
+      z-index: 1;
+      width: 34px;
+      height: 34px;
+      color: var(--gold);
+    }
+
+    .deliverable-core small {
+      color: #8d9ab0;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .deliverable-core strong {
+      max-width: 210px;
+      margin-top: 7px;
+      color: #fff;
+      font-size: 21px;
+      letter-spacing: -.03em;
+      line-height: 1.2;
+    }
+
+    .deliverable-core p {
+      margin: 11px 0 0;
+      color: #9facc0;
+      font-size: 12px;
+    }
+
     .comparison-shell {
       margin-top: 42px;
       overflow: hidden;
@@ -1006,25 +1216,34 @@
     }
 
     .process-grid {
-      margin-top: 52px;
+      position: relative;
+      margin-top: 48px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      border: 1px solid rgba(255,255,255,.13);
-      border-radius: 18px;
-      overflow: hidden;
-      background: rgba(255,255,255,.13);
+      gap: 26px;
+    }
+
+    .process-grid::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 18px;
+      right: 18px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(217,181,109,.45), rgba(110,155,245,.38));
     }
 
     .process-card {
-      min-height: 286px;
-      padding: 28px;
-      background: var(--navy);
+      position: relative;
+      z-index: 1;
+      min-height: 0;
+      padding: 0;
+      background: transparent;
     }
 
     .process-index {
-      width: 34px;
-      height: 34px;
+      width: 40px;
+      height: 40px;
       display: grid;
       place-items: center;
       border: 1px solid rgba(217,181,109,.34);
@@ -1033,10 +1252,11 @@
       font-size: 12px;
       font-weight: 800;
       font-variant-numeric: tabular-nums;
+      background: var(--navy);
     }
 
     .process-card h3 {
-      margin: 56px 0 12px;
+      margin: 28px 0 10px;
       color: #fff;
       font-size: 19px;
       letter-spacing: -.02em;
@@ -1287,7 +1507,7 @@
     .cta-shell {
       position: relative;
       overflow: hidden;
-      padding: clamp(34px, 7vw, 76px);
+      padding: clamp(34px, 5vw, 60px);
       border-radius: 22px;
       color: var(--navy-text);
       background: var(--navy);
@@ -1308,7 +1528,16 @@
     .cta-content {
       position: relative;
       z-index: 2;
-      max-width: 750px;
+      max-width: 680px;
+    }
+
+    .cta-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+      align-items: center;
+      gap: clamp(34px, 6vw, 72px);
     }
 
     .cta-shell h2 {
@@ -1339,6 +1568,97 @@
       margin-top: 15px;
       color: #74829a;
       font-size: 11px;
+    }
+
+    .telegram-preview {
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 18px;
+      background: #18243a;
+      box-shadow: 0 24px 70px rgba(0,0,0,.22);
+    }
+
+    .telegram-head {
+      padding: 15px 17px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background: #202d43;
+    }
+
+    .telegram-avatar {
+      width: 37px;
+      height: 37px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      color: #fff;
+      background: #229ed9;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .telegram-head strong {
+      display: block;
+      color: #fff;
+      font-size: 13px;
+    }
+
+    .telegram-head span {
+      display: block;
+      margin-top: 2px;
+      color: #80bfea;
+      font-size: 10px;
+    }
+
+    .telegram-chat {
+      padding: 20px 17px 17px;
+      display: grid;
+      gap: 10px;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(70,110,164,.16), transparent 28%),
+        #142033;
+    }
+
+    .chat-message {
+      width: fit-content;
+      max-width: 88%;
+      padding: 10px 12px;
+      border-radius: 12px 12px 12px 4px;
+      color: #e5ebf3;
+      background: #22334d;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .chat-message.user {
+      justify-self: end;
+      border-radius: 12px 12px 4px 12px;
+      color: #f2fbf5;
+      background: #2b6450;
+    }
+
+    .chat-message strong {
+      display: block;
+      margin-bottom: 3px;
+      color: #8fc6f0;
+      font-size: 10px;
+    }
+
+    .telegram-start {
+      margin-top: 4px;
+      min-height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      color: #fff;
+      background: #229ed9;
+      font-size: 11px;
+      font-weight: 800;
     }
 
     .site-footer {
@@ -1401,12 +1721,35 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .deliverable-map {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .deliverable-map::before,
+      .deliverable-map::after {
+        display: none;
+      }
+
+      .deliverable-core {
+        min-height: 270px;
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+
       .process-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
       .architecture-grid {
         grid-template-columns: 1fr;
+      }
+
+      .cta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .telegram-preview {
+        width: min(100%, 540px);
       }
     }
 
@@ -1465,7 +1808,7 @@
       }
 
       .section {
-        padding: 78px 0;
+        padding: 68px 0;
       }
 
       .diagnostic-shell,
@@ -1499,6 +1842,20 @@
       }
 
       .feature-card {
+        min-height: 0;
+      }
+
+      .deliverable-map {
+        padding: 14px;
+        grid-template-columns: 1fr;
+      }
+
+      .deliverable-core {
+        min-height: 250px;
+        grid-column: auto;
+      }
+
+      .deliverable-item {
         min-height: 0;
       }
 
@@ -1547,14 +1904,30 @@
 
       .process-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .process-grid::before {
+        top: 18px;
+        bottom: 18px;
+        left: 19px;
+        right: auto;
+        width: 1px;
+        height: auto;
       }
 
       .process-card {
         min-height: 0;
+        padding-left: 58px;
+      }
+
+      .process-index {
+        position: absolute;
+        left: 0;
       }
 
       .process-card h3 {
-        margin-top: 28px;
+        margin-top: 0;
       }
 
       .architecture-card::before {
@@ -1781,13 +2154,13 @@
         <div class="diagnostic-shell">
           <div class="quiz-panel">
             <div class="quiz-progress-row">
-              <span class="quiz-progress-label">Заполнено <span class="quiz-count" id="answeredCount">0 из 6</span></span>
+              <span class="quiz-progress-label"><span class="quiz-count" id="quizStep">Вопрос 1 из 6</span></span>
               <div class="quiz-progress" aria-hidden="true"><span id="progressBar"></span></div>
             </div>
 
             <div class="question-list">
-              <div class="question" data-question="formula" data-risk="Формулы и правила выплат не закреплены">
-                <p class="question-title">1. Сотрудник может сам рассчитать свою премию до закрытия месяца?</p>
+              <div class="question is-active" data-question="formula" data-risk="Формулы и правила выплат не закреплены">
+                <p class="question-title">Сотрудник может сам рассчитать свою премию до закрытия месяца?</p>
                 <div class="answer-group" role="group" aria-label="Ответ на вопрос 1">
                   <button class="answer" type="button" data-value="0" aria-pressed="false">Да</button>
                   <button class="answer" type="button" data-value="1" aria-pressed="false">Частично</button>
@@ -1796,7 +2169,7 @@
               </div>
 
               <div class="question" data-question="finance" data-risk="Премия не защищена прибылью и денежным потоком">
-                <p class="question-title">2. Выплата зависит от прибыли или денежного потока, а не только от выручки?</p>
+                <p class="question-title">Выплата зависит от прибыли или денежного потока, а не только от выручки?</p>
                 <div class="answer-group" role="group" aria-label="Ответ на вопрос 2">
                   <button class="answer" type="button" data-value="0" aria-pressed="false">Да</button>
                   <button class="answer" type="button" data-value="1" aria-pressed="false">Частично</button>
@@ -1805,7 +2178,7 @@
               </div>
 
               <div class="question" data-question="control" data-risk="В KPI есть показатели, на которые сотрудник не влияет">
-                <p class="question-title">3. Каждый KPI находится в зоне прямого влияния сотрудника?</p>
+                <p class="question-title">Каждый KPI находится в зоне прямого влияния сотрудника?</p>
                 <div class="answer-group" role="group" aria-label="Ответ на вопрос 3">
                   <button class="answer" type="button" data-value="0" aria-pressed="false">Да</button>
                   <button class="answer" type="button" data-value="1" aria-pressed="false">Частично</button>
@@ -1814,7 +2187,7 @@
               </div>
 
               <div class="question" data-question="team" data-risk="Цели подразделений не собраны в общий результат">
-                <p class="question-title">4. Цели разных отделов согласованы между собой и не создают конфликтов?</p>
+                <p class="question-title">Цели разных отделов согласованы между собой и не создают конфликтов?</p>
                 <div class="answer-group" role="group" aria-label="Ответ на вопрос 4">
                   <button class="answer" type="button" data-value="0" aria-pressed="false">Да</button>
                   <button class="answer" type="button" data-value="1" aria-pressed="false">Частично</button>
@@ -1823,7 +2196,7 @@
               </div>
 
               <div class="question" data-question="fund" data-risk="Собственник не видит предельную стоимость премиального фонда">
-                <p class="question-title">5. Собственник заранее понимает максимальный размер премиального фонда?</p>
+                <p class="question-title">Собственник заранее понимает максимальный размер премиального фонда?</p>
                 <div class="answer-group" role="group" aria-label="Ответ на вопрос 5">
                   <button class="answer" type="button" data-value="0" aria-pressed="false">Да</button>
                   <button class="answer" type="button" data-value="1" aria-pressed="false">Частично</button>
@@ -1832,13 +2205,21 @@
               </div>
 
               <div class="question" data-question="stability" data-risk="Правила выплат меняются в ручном режиме">
-                <p class="question-title">6. Правила сохраняются от месяца к месяцу без ручных исключений?</p>
+                <p class="question-title">Правила сохраняются от месяца к месяцу без ручных исключений?</p>
                 <div class="answer-group" role="group" aria-label="Ответ на вопрос 6">
                   <button class="answer" type="button" data-value="0" aria-pressed="false">Да</button>
                   <button class="answer" type="button" data-value="1" aria-pressed="false">Частично</button>
                   <button class="answer" type="button" data-value="2" aria-pressed="false">Нет</button>
                 </div>
               </div>
+            </div>
+
+            <div class="quiz-navigation">
+              <button class="quiz-back" id="quizBack" type="button" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M19 12H5m5-5-5 5 5 5"/></svg>
+                Назад
+              </button>
+              <div class="quiz-dots" id="quizDots" aria-hidden="true"></div>
             </div>
           </div>
 
@@ -1883,84 +2264,45 @@
         <h2 class="section-heading" id="result-title">Не набор KPI, а <em>рабочая управленческая система</em></h2>
         <p class="section-intro">На выходе у собственника остаются понятные правила, расчётная модель и инструменты контроля — без зависимости от устных договорённостей.</p>
 
-        <div class="features-grid">
-          <article class="feature-card">
-            <div class="feature-top">
-              <span class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/>
-                </svg>
-              </span>
-              <span class="feature-number">01</span>
-            </div>
-            <h3>Карта целей</h3>
-            <p>Связь целей компании, подразделений и конкретных ролей в одной логике.</p>
-          </article>
+        <div class="deliverable-map" aria-label="Карта результата проекта">
+          <div class="deliverable-rail">
+            <article class="deliverable-item">
+              <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></span>
+              <div><h3>Карта целей</h3><p>Компания, подразделения и роли связаны в одной логике.</p></div>
+            </article>
+            <article class="deliverable-item">
+              <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9m5 10V5m5 14v-6m5 6V8"/><path d="m4 5 5 3 5-4 6 3"/></svg></span>
+              <div><h3>Система KPI</h3><p>Измеримые показатели в зоне влияния сотрудника.</p></div>
+            </article>
+            <article class="deliverable-item">
+              <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M7 3v4m10-4v4M5 11h3m3 0h3m3 0h2M5 15h3m3 0h3m3 0h2M5 19h3m3 0h3"/></svg></span>
+              <div><h3>Расчётная модель</h3><p>Формулы, пороги и сценарии фонда в проверяемом виде.</p></div>
+            </article>
+          </div>
 
-          <article class="feature-card">
-            <div class="feature-top">
-              <span class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M4 19V9m5 10V5m5 14v-6m5 6V8"/><path d="m4 5 5 3 5-4 6 3"/>
-                </svg>
-              </span>
-              <span class="feature-number">02</span>
+          <div class="deliverable-core">
+            <div class="core-orbit" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 18V6m0 12h16"/><path d="m7 14 4-4 3 2 5-6"/></svg>
             </div>
-            <h3>Система KPI</h3>
-            <p>Только измеримые показатели, на которые сотрудник реально может влиять.</p>
-          </article>
+            <small>Центр системы</small>
+            <strong>Финансовый результат бизнеса</strong>
+            <p>Прибыль · деньги · качество</p>
+          </div>
 
-          <article class="feature-card">
-            <div class="feature-top">
-              <span class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M4 7h16M7 3v4m10-4v4M5 11h3m3 0h3m3 0h2M5 15h3m3 0h3m3 0h2M5 19h3m3 0h3"/>
-                </svg>
-              </span>
-              <span class="feature-number">03</span>
-            </div>
-            <h3>Расчётная модель</h3>
-            <p>Формулы, пороги, коэффициенты и сценарии фонда в проверяемом виде.</p>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-top">
-              <span class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/>
-                </svg>
-              </span>
-              <span class="feature-number">04</span>
-            </div>
-            <h3>Регламент</h3>
-            <p>Единые правила расчёта, согласования, изменения и выплаты премии.</p>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-top">
-              <span class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M4 18V6m0 12h16"/><path d="m7 14 4-4 3 2 5-6"/>
-                </svg>
-              </span>
-              <span class="feature-number">05</span>
-            </div>
-            <h3>Контроль собственника</h3>
-            <p>Понимание цены результата и предельного фонда до фактической выплаты.</p>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-top">
-              <span class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m17 11 2 2 4-4"/>
-                </svg>
-              </span>
-              <span class="feature-number">06</span>
-            </div>
-            <h3>Сценарий внедрения</h3>
-            <p>Как объяснить систему команде, провести тестовый период и снять сопротивление.</p>
-          </article>
+          <div class="deliverable-rail">
+            <article class="deliverable-item">
+              <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+              <div><h3>Регламент</h3><p>Единые правила расчёта, изменения и выплаты премии.</p></div>
+            </article>
+            <article class="deliverable-item">
+              <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg></span>
+              <div><h3>Контроль собственника</h3><p>Цена результата и предельный фонд до выплаты.</p></div>
+            </article>
+            <article class="deliverable-item">
+              <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m17 11 2 2 4-4"/></svg></span>
+              <div><h3>Сценарий внедрения</h3><p>Тестовый период и понятная коммуникация для команды.</p></div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -2150,20 +2492,35 @@
     <section class="final-cta">
       <div class="container">
         <div class="cta-shell">
-          <div class="cta-content">
-            <p class="eyebrow">Следующий шаг</p>
-            <h2>Начните с диагностики — без перестройки всей системы</h2>
-            <p>Пришлите краткое описание команды и текущей логики премирования. В ответ определим, где система теряет деньги или управляемость и какой формат работы действительно нужен.</p>
-            <div class="cta-actions">
-              <a class="button button-telegram" href="https://t.me/RidFinancebot_bot?start=zapis" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M21.6 3.3c-.3-.2-.8-.2-1.3 0L2.9 10c-.7.3-1.1.7-1 1.2.1.4.5.7 1.2.9l4.4 1.4 1.7 5.2c.1.4.4.7.8.8.4.1.8 0 1.1-.3l2.5-2.4 4.7 3.5c.4.3.8.4 1.2.2.4-.1.6-.5.7-1l2.6-14.9c.1-.6-.1-1.1-.5-1.3h-.7Zm-11.1 11 .1 3.1-1.1-3.7 8.8-6.4-7.8 7Z"/>
-                </svg>
-                Написать в Telegram
-              </a>
-              <a class="button button-outline" href="#diagnostic" style="color:#fff;border-color:rgba(255,255,255,.24)">Пройти тест сначала</a>
+          <div class="cta-grid">
+            <div class="cta-content">
+              <p class="eyebrow">Следующий шаг</p>
+              <h2>Начните с диагностики — без перестройки всей системы</h2>
+              <p>Пришлите краткое описание команды и текущей логики премирования. В ответ определим, где система теряет деньги или управляемость и какой формат работы действительно нужен.</p>
+              <div class="cta-actions">
+                <a class="button button-telegram" href="https://t.me/RidFinancebot_bot?start=zapis" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M21.6 3.3c-.3-.2-.8-.2-1.3 0L2.9 10c-.7.3-1.1.7-1 1.2.1.4.5.7 1.2.9l4.4 1.4 1.7 5.2c.1.4.4.7.8.8.4.1.8 0 1.1-.3l2.5-2.4 4.7 3.5c.4.3.8.4 1.2.2.4-.1.6-.5.7-1l2.6-14.9c.1-.6-.1-1.1-.5-1.3h-.7Zm-11.1 11 .1 3.1-1.1-3.7 8.8-6.4-7.8 7Z"/>
+                  </svg>
+                  Написать в Telegram
+                </a>
+                <a class="button button-outline" href="#diagnostic" style="color:#fff;border-color:rgba(255,255,255,.24)">Пройти тест сначала</a>
+              </div>
+              <div class="cta-microcopy">Telegram-бот РидФинанс · ответ по вашей задаче, без общей презентации услуг</div>
             </div>
-            <div class="cta-microcopy">Telegram-бот РидФинанс · ответ по вашей задаче, без общей презентации услуг</div>
+
+            <div class="telegram-preview" aria-label="Как начинается диалог в Telegram">
+              <div class="telegram-head">
+                <div class="telegram-avatar">RF</div>
+                <div><strong>РидФинанс</strong><span>бот для первичной диагностики</span></div>
+              </div>
+              <div class="telegram-chat">
+                <div class="chat-message"><strong>РидФинанс</strong>Здравствуйте. Коротко опишите, кого сейчас премируете и за какие показатели.</div>
+                <div class="chat-message user">Руководителя продаж и менеджеров. Премия зависит от выручки.</div>
+                <div class="chat-message"><strong>РидФинанс</strong>Проверим связь с маржой, оплатами и зоной влияния сотрудников. После этого предложим формат разбора.</div>
+                <a class="telegram-start" href="https://t.me/RidFinancebot_bot?start=zapis" target="_blank" rel="noopener">Начать диалог</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2202,7 +2559,9 @@
 
       const questions = [...document.querySelectorAll(".question")];
       const answers = {};
-      const answeredCount = document.getElementById("answeredCount");
+      const quizStep = document.getElementById("quizStep");
+      const quizBack = document.getElementById("quizBack");
+      const quizDots = document.getElementById("quizDots");
       const progressBar = document.getElementById("progressBar");
       const resultPlaceholder = document.getElementById("resultPlaceholder");
       const resultContent = document.getElementById("resultContent");
@@ -2213,6 +2572,7 @@
       const riskList = document.getElementById("riskList");
       const copyResult = document.getElementById("copyResult");
       const copyStatus = document.getElementById("copyStatus");
+      let activeQuestionIndex = 0;
       let resultText = "";
 
       const levels = [
@@ -2236,13 +2596,31 @@
         }
       ];
 
+      questions.forEach(() => {
+        const dot = document.createElement("span");
+        dot.className = "quiz-dot";
+        quizDots.appendChild(dot);
+      });
+
+      const showQuestion = (index) => {
+        activeQuestionIndex = Math.max(0, Math.min(index, questions.length - 1));
+        questions.forEach((question, questionIndex) => {
+          question.classList.toggle("is-active", questionIndex === activeQuestionIndex);
+        });
+
+        quizStep.textContent = "Вопрос " + (activeQuestionIndex + 1) + " из " + questions.length;
+        progressBar.style.width = ((activeQuestionIndex + 1) / questions.length * 100) + "%";
+        quizBack.disabled = activeQuestionIndex === 0;
+
+        [...quizDots.children].forEach((dot, dotIndex) => {
+          dot.classList.toggle("is-active", dotIndex === activeQuestionIndex);
+          dot.classList.toggle("is-complete", answers[questions[dotIndex].dataset.question] !== undefined);
+        });
+      };
+
       const updateProgress = () => {
         const count = Object.keys(answers).length;
-        answeredCount.textContent = count + " из " + questions.length;
-        progressBar.style.width = (count / questions.length * 100) + "%";
-        if (count === questions.length) {
-          renderResult();
-        }
+        if (count === questions.length) renderResult();
       };
 
       const renderResult = () => {
@@ -2283,7 +2661,7 @@
         resultContent.classList.add("is-visible");
       };
 
-      questions.forEach((question) => {
+      questions.forEach((question, questionIndex) => {
         const buttons = [...question.querySelectorAll(".answer")];
         buttons.forEach((button) => {
           button.addEventListener("click", () => {
@@ -2292,9 +2670,17 @@
             answers[question.dataset.question] = Number(button.dataset.value);
             copyStatus.textContent = "";
             updateProgress();
+            showQuestion(questionIndex);
+
+            if (questionIndex < questions.length - 1) {
+              window.setTimeout(() => showQuestion(questionIndex + 1), 170);
+            }
           });
         });
       });
+
+      quizBack.addEventListener("click", () => showQuestion(activeQuestionIndex - 1));
+      showQuestion(0);
 
       copyResult.addEventListener("click", async () => {
         try {
